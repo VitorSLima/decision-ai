@@ -26,8 +26,8 @@ export class ScoreController {
   @ApiOperation({ summary: 'Cria um vínculo entre opção e critério.' })
   @ApiBody({ type: CreateScoreDto })
   @ApiCreatedResponse({ description: 'Score criado com sucesso.' })
-  create(@Body() createScoreDto: CreateScoreDto) {
-    return this.scoreService.create(createScoreDto);
+  create(@Body() data: CreateScoreDto) {
+    return this.scoreService.create(data);
   }
 
   @Delete(':id')
