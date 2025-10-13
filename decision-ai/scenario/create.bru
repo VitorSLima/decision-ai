@@ -1,0 +1,18 @@
+meta {
+  name: create
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/scenario
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title":"teste2",
+    "description":"teste2"
+  }
+}

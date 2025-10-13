@@ -15,6 +15,7 @@ export function normalizeWeights(weights: number[]): number[] {
  * @param normWeights - Array de pesos normalizados
  * @returns Pontuação ponderada
  */
+
 export function weightedScore(
   values0to10: number[],
   normWeights: number[],
@@ -33,6 +34,7 @@ export function weightedScore(
  * @param scores - Array de pontuações
  * @returns Array de itens ordenados
  */
+
 export function rankDescending<T>(items: T[], scores: number[]) {
   return items
     .map((item, i) => ({ item, score: Number(scores[i]?.toFixed(4)) }))

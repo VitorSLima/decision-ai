@@ -1,17 +1,11 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { ScenarioService } from './scenario.service';
 import { CreateScenarioDto } from './dto/create-scenario.dto';
 import { UpdateScenarioDto } from './dto/update-scenario.dto';
 
-@Controller('scenario')
+@ApiTags('Scenarios')
+@Controller('scenarios')
 export class ScenarioController {
   constructor(private readonly scenarioService: ScenarioService) {}
 
@@ -27,19 +21,16 @@ export class ScenarioController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.scenarioService.findOne(+id);
+    return this.scenarioService.findOne(id);
   }
 
   @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateScenarioDto: UpdateScenarioDto,
-  ) {
-    return this.scenarioService.update(+id, updateScenarioDto);
+  update(@Param('id') id: string, @Body() updateScenarioDto: UpdateScenarioDto) {
+    return this.scenarioService.update(id, updateScenarioDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.scenarioService.remove(+id);
+    return this.scenarioService.remove(id);
   }
 }
