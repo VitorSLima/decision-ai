@@ -23,9 +23,19 @@ export class CreateCriterionDto {
   @IsNumber()
   @Min(0)
   @Max(1)
+  @ApiProperty({
+    description: 'Peso do critério entre 0 e 1',
+    example: 0.5,
+  })
   weight: number;
 
   @IsBoolean()
   @IsOptional()
+  @ApiProperty({
+    description: 'Indica se o critério está ativo',
+    example: true,
+    required: false,
+    default: true,
+  })
   active?: boolean;
 }
