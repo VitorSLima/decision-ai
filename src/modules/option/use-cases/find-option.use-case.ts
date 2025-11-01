@@ -1,6 +1,9 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { FindOptionRepository } from '../repository';
 
+/**
+ * Caso de uso responsável por buscar uma opção pelo identificador.
+ */
 @Injectable()
 export class FindOptionUseCase {
   constructor(
@@ -8,6 +11,10 @@ export class FindOptionUseCase {
     private readonly logger: Logger,
   ) {}
 
+  /**
+   * Carrega uma opção ou lança exceção caso não exista.
+   * @param id Identificador da opção.
+   */
   async execute(id: string) {
     const option = await this.findOptionRepository.findById(id);
 
