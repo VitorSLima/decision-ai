@@ -1,6 +1,9 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { FindScenarioRepository } from '../repository';
 
+/**
+ * Caso de uso responsável por localizar um cenário específico.
+ */
 @Injectable()
 export class FindScenarioUseCase {
   constructor(
@@ -8,6 +11,10 @@ export class FindScenarioUseCase {
     private readonly logger: Logger,
   ) {}
 
+  /**
+   * Recupera um cenário pelo identificador ou lança exceção.
+   * @param id Identificador do cenário.
+   */
   async execute(id: string) {
     const scenario = await this.findScenarioRepository.findById(id);
 
