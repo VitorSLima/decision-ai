@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { ScoreService } from './score.service';
 import { CreateScoreDto } from './dto/create-score.dto';
@@ -7,6 +7,11 @@ import { CreateScoreDto } from './dto/create-score.dto';
 @Controller('scores')
 export class ScoreController {
   constructor(private readonly scoreService: ScoreService) {}
+
+  @Get()
+  list() {
+    return this.scoreService.list();
+  }
 
   @Post()
   create(@Body() createScoreDto: CreateScoreDto) {

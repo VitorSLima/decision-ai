@@ -1,10 +1,18 @@
-import { ConflictException, Injectable, Logger, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  Logger,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateScoreDto } from '../dto/create-score.dto';
 import {
   CreateScoreRepository,
   FindScoreByLinkRepository,
 } from '../repository';
 
+/**
+ * Caso de uso responsável por vincular opções a critérios.
+ */
 @Injectable()
 export class CreateScoreUseCase {
   constructor(
@@ -13,6 +21,10 @@ export class CreateScoreUseCase {
     private readonly logger: Logger,
   ) {}
 
+  /**
+   * Cria o vínculo garantindo unicidade e tratando inconsistências.
+   * @param data Dados do vínculo entre opção e critério.
+   */
   async execute(data: CreateScoreDto) {
     const existing = await this.findScoreByLinkRepository.find(
       data.optionId,
