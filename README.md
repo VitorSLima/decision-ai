@@ -96,3 +96,11 @@ Agora, envie o código configurado para o seu repositório.
  **Pronto!** 
 
 Seu projeto está configurado e salvo no seu GitHub. Bom trabalho!
+
+
+
+
+
+ORDEM:
+
+SCENARIOS => OPTIONS => CRITERIA => SCORES => DECIDE
