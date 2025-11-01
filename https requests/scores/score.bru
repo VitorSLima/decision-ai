@@ -1,0 +1,23 @@
+meta {
+  name: score
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{url}}/scores
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "optionId": "d52217b6-5eee-4beb-a109-bc317712545c",
+    "criterionId": "5f10d518-8646-40bf-8af9-1b7ebd28394d"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

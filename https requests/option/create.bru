@@ -5,11 +5,19 @@ meta {
 }
 
 post {
-  url: {{url}}/option
-  body: none
+  url: {{url}}/scenarios/78ab441c-4173-4eef-bb1c-536b30007775/options
+  body: json
   auth: inherit
+}
+
+body:json {
+  { 
+    "name": "Fornecedor Beta", 
+    "description": "Entrega rápida, custo intermediário." 
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

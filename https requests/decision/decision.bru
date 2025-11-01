@@ -1,0 +1,22 @@
+meta {
+  name: decision
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{url}}/decide
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "scenarioId":"78ab441c-4173-4eef-bb1c-536b30007775"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
