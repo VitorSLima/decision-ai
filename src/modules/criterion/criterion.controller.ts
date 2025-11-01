@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CriterionService } from './criterion.service';
 import { CreateCriterionDto } from './dto/create-criterion.dto';
@@ -25,7 +33,10 @@ export class CriterionController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCriterionDto: UpdateCriterionDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateCriterionDto: UpdateCriterionDto,
+  ) {
     return this.criterionService.update(id, updateCriterionDto);
   }
 

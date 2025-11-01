@@ -1,6 +1,9 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { FindCriterionRepository } from '../repository';
 
+/**
+ * Caso de uso responsável por localizar um critério específico.
+ */
 @Injectable()
 export class FindCriterionUseCase {
   constructor(
@@ -8,6 +11,10 @@ export class FindCriterionUseCase {
     private readonly logger: Logger,
   ) {}
 
+  /**
+   * Recupera um critério pelo identificador ou lança exceção se ausente.
+   * @param id Identificador do critério.
+   */
   async execute(id: string) {
     const criterion = await this.findCriterionRepository.findById(id);
 
