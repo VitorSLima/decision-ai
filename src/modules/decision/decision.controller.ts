@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { DecisionService } from './decision.service';
 import { DecideDto } from './dto/decide.dto';
@@ -7,6 +7,11 @@ import { DecideDto } from './dto/decide.dto';
 @Controller('decide')
 export class DecisionController {
   constructor(private readonly decisionService: DecisionService) {}
+
+  @Get()
+  list() {
+    return this.decisionService.list();
+  }
 
   @Post()
   decide(@Body() decideDto: DecideDto) {
