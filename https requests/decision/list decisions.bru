@@ -1,0 +1,16 @@
+meta {
+  name: list decisions
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{url}}/decide
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
