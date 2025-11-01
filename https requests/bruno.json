@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "decision-ai",
+  "name": "https requests",
   "type": "collection",
   "ignore": [
     "node_modules",
