@@ -8,6 +8,7 @@ describe('ScoreController', () => {
   const scoreService = {
     create: jest.fn(),
     remove: jest.fn(),
+    list: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -37,5 +38,14 @@ describe('ScoreController', () => {
 
     expect(result).toEqual({ id: 'score-1' });
     expect(scoreService.remove).toHaveBeenCalledWith('score-1');
+  });
+
+  it('lists score links', () => {
+    scoreService.list.mockReturnValue([{ id: 'score-1' }]);
+
+    const result = controller.list();
+
+    expect(result).toEqual([{ id: 'score-1' }]);
+    expect(scoreService.list).toHaveBeenCalled();
   });
 });

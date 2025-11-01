@@ -6,6 +6,7 @@ describe('DecisionController', () => {
   let controller: DecisionController;
   const decisionService = {
     decide: jest.fn(),
+    list: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -26,5 +27,14 @@ describe('DecisionController', () => {
 
     expect(result).toEqual({ bestOptions: [] });
     expect(decisionService.decide).toHaveBeenCalledWith(payload);
+  });
+
+  it('returns decision list', () => {
+    decisionService.list.mockReturnValue([{ scenario: { id: 'scenario-1' } }]);
+
+    const result = controller.list();
+
+    expect(result).toEqual([{ scenario: { id: 'scenario-1' } }]);
+    expect(decisionService.list).toHaveBeenCalled();
   });
 });

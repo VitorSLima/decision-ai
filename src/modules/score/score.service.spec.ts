@@ -1,12 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ScoreService } from './score.service';
-import { CreateScoreUseCase, DeleteScoreUseCase } from './use-cases';
+import {
+  CreateScoreUseCase,
+  DeleteScoreUseCase,
+  ListScoresUseCase,
+} from './use-cases';
 import { CreateScoreDto } from './dto/create-score.dto';
 
 describe('ScoreService', () => {
   let service: ScoreService;
   const createScoreUseCase = { execute: jest.fn() };
   const deleteScoreUseCase = { execute: jest.fn() };
+  const listScoresUseCase = { execute: jest.fn() };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -14,6 +19,7 @@ describe('ScoreService', () => {
         ScoreService,
         { provide: CreateScoreUseCase, useValue: createScoreUseCase },
         { provide: DeleteScoreUseCase, useValue: deleteScoreUseCase },
+        { provide: ListScoresUseCase, useValue: listScoresUseCase },
       ],
     }).compile();
 
@@ -39,5 +45,15 @@ describe('ScoreService', () => {
 
     expect(result).toEqual({ id: 'score-1' });
     expect(deleteScoreUseCase.execute).toHaveBeenCalledWith('score-1');
+  });
+
+  it('lists score links', async () => {
+    const expected = [{ id: 'score-1' }];
+    listScoresUseCase.execute.mockResolvedValue(expected);
+
+    const result = await service.list();
+
+    expect(result).toEqual(expected);
+    expect(listScoresUseCase.execute).toHaveBeenCalled();
   });
 });
